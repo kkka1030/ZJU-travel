@@ -1,0 +1,27 @@
+<h2>天气预警</h2>
+<div class="alert alert-info" id="weatherResult">加载中...</div>
+
+<script>
+function loadWeather() {
+  fetch("/api/weather?city=Hangzhou")
+    .then(res => res.json())
+    .then(data => {
+      const box = document.getElementById("weatherResult");
+      if (data.error) {
+        box.innerHTML = `<strong>错误：</strong> ${data.error}`;
+        box.className = "alert alert-danger";
+      } else {
+        box.className = "alert alert-info";
+        box.innerHTML = `<strong>${data.城市}</strong> 当前天气：${data.天气}<br>
+                        温度：${data.温度}°C，体感：${data.体感温度}°C<br>
+                        风速：${data.风速} m/s`;
+      }
+    })
+    .catch(err => {
+      document.getElementById("weatherResult").innerHTML = "加载失败：" + err;
+    });
+}
+
+window.onload = loadWeather;
+</script>
+

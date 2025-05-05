@@ -1,0 +1,80 @@
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #74ebd5, #acb6e5);
+  }
+  
+  .login-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background: #f5f5f5;
+    padding: 20px;
+  }
+  
+  .sidebar h4 {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin: 10px 0;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .chatbox {
+    height: 400px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .user-msg {
+    text-align: right;
+    background: #c8e6c9;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .ai-msg {
+    text-align: left;
+    background: #bbdefb;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
