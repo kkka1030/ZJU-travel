@@ -1,27 +1,11 @@
 <h2>天气预警</h2>
-<div class="alert alert-info" id="weatherResult">加载中...</div>
+<div class="alert alert-warning">
+  <strong>暴雨黄色预警：</strong> 杭州市区未来24小时将有大雨，请注意出行安全。
+</div>
+<ul>
+  <li>建议携带雨具</li>
+  <li>避免山区游览</li>
+  <li>密切关注天气动态</li>
+</ul>
 
-<script>
-function loadWeather() {
-  fetch("/api/weather?city=Hangzhou")
-    .then(res => res.json())
-    .then(data => {
-      const box = document.getElementById("weatherResult");
-      if (data.error) {
-        box.innerHTML = `<strong>错误：</strong> ${data.error}`;
-        box.className = "alert alert-danger";
-      } else {
-        box.className = "alert alert-info";
-        box.innerHTML = `<strong>${data.城市}</strong> 当前天气：${data.天气}<br>
-                        温度：${data.温度}°C，体感：${data.体感温度}°C<br>
-                        风速：${data.风速} m/s`;
-      }
-    })
-    .catch(err => {
-      document.getElementById("weatherResult").innerHTML = "加载失败：" + err;
-    });
-}
-
-window.onload = loadWeather;
-</script>
 

@@ -69,30 +69,6 @@ def serve_page(page):
         return render_template(f"{page}.html")
     except:
         return f"<h3>未找到页面：{page}.html</h3>", 404
-import requests
-
-@app.route("/api/weather")
-def get_weather():
-    city = request.args.get("city", "Hangzhou")
-    api_key = os.getenv("WEATHER_API_KEY")
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&lang=zh_cn&units=metric"
-
-    try:
-        res = requests.get(url)
-        data = res.json()
-        if res.status_code != 200:
-            return jsonify({"error": data.get("message", "无法获取天气")}), 400
-
-        result = {
-            "城市": city,
-            "天气": data["weather"][0]["description"],
-            "温度": data["main"]["temp"],
-            "体感温度": data["main"]["feels_like"],
-            "风速": data["wind"]["speed"]
-        }
-        return jsonify(result)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
